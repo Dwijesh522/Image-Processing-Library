@@ -3,10 +3,14 @@
 #include "functions.h"
 using namespace std;
 
-bool checkAndStoreInput(char* str[], int* sap, int* sfp, int* padValuep, bool *isPadp, string* file1p, string* file2p)
+bool checkAndStoreInput(char* str[], int* sap, int* sfp, int* padValuep, bool * withMult, bool *isPadp, string* file1p, string* file2p)
 {	
-	if((string)str[1] == "convolve_without_padding")
+	if((string)str[1] == "convolve_without_padding" or (string)str[1] == "conv_without_padding_mult")
 	{
+		if((string)str[1] == "convolve_without_padding")
+			*withMult = false;
+		else
+			*withMult = true;
 		*isPadp = false;
 		*file1p = str[2];//will br chacked in some other function
 
@@ -25,9 +29,13 @@ bool checkAndStoreInput(char* str[], int* sap, int* sfp, int* padValuep, bool *i
 
 		return true;
 	}
-	else if( (string)str[1] == "convolve_with_padding")
+	else if( (string)str[1] == "convolve_with_padding" or (string)str[1] == "conv_with_padding_mult")
 	{
 		*isPadp = true;
+		if((string)str[1] == "convolve_with_padding")
+			*withMult = false;
+		else
+			*withMult = true;
 		
 		int tempInt;
 		if(sscanf(str[2], "%d", &tempInt) == 0)
