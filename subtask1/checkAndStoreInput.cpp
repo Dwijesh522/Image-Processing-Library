@@ -102,6 +102,32 @@ bool checkAndStoreInput(int argc, char* str[], int* sap, int* sfp, int* padValue
 
 			return true;
 		}
+		else if((string)str[1] == "maxPooling_of_matrix" or (string)str[1] == "avgPooling_of_matrix")
+		{
+			//maxPooling_of_matrix matrix.txt size strideValue
+			//sap === size of input matrix, file1p === matrixFile.txt  padValuep === stride value  isrelup === isMaxPooling
+			if((string)str[1] == "maxPooling_of_matrix")
+				*isRelup = true;
+			else
+				*isRelup = false;
+			//tanh_of_matrix inputMatrix.txt rows cols
+			*file1p = str[2];
+			
+			int tempInt;
+			if(sscanf(str[3], "%d", &tempInt) == 1)
+				*sap = tempInt;
+			else
+				return false;
+
+			if(sscanf(str[4], "%d", &tempInt) == 1)
+				*padValuep = tempInt;
+			else
+				return false;
+
+			return true;
+		}
+		else 
+			return false;
 	}
 	else
 		return false;

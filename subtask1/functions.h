@@ -18,3 +18,12 @@ void padMatrix(float*, float*, int, int);
 bool readInput_relu_tanh(float*, int, int, string);
 void relu_of_matrix(float*, int, int, float*);
 void tanh_of_matrix(float*, int, int, float*);
+
+
+void softMax(float* , float* , int );
+void sigmoid(float* , float* , int );
+bool checkAndStoreInput_4(char* str[], int* , string* , bool* );
+bool readInput_sig_softMax(float* , string , int );
+
+
+bool readInput_pooling(float* , int , string );
